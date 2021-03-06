@@ -1,0 +1,41 @@
+version: "3.5"
+
+services: 
+
+  mysql:
+    image: mysql:5.7
+    container_name: internal-mysql
+    restart: unless-stopped
+    working_dir: /application
+    volumes: 
+      - .:/application
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=internal_transfer
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports: 
+      - "3306:3306"
+
+  webserver:
+    image: nginx:alpine
+    container_name: internal-webserver
+    working_dir: /application
+    volumes: 
+      - .:/application
+      - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports: 
+      - "8000:80"
+
+  php-fpm:
+    build: phpdocker/php-fpm
+    container_name: internal-php-fpm
+    working_dir: /application
+    links: 
+      - mysql:mysql
+    volumes: 
+      - .:/application
+      - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+    depends_on: 
+      - mysql
+
