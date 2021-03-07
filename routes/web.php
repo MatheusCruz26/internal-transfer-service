@@ -16,3 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'transaction'], function($transaction) {
+    $transaction->post('/', 'TransactionController@store');
+});
