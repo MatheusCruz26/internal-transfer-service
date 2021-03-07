@@ -21,7 +21,7 @@ class CreateTransactionsTable extends Migration
 
             $table->decimal('value', 10, 2);
 
-            $table->enum('status', ['in process', 'processed', 'canceled', 'unprocessed'])->default('in process');
+            $table->enum('status', ['in process', 'processed', 'canceled', 'unprocessed', 'not authorized'])->default('in process');
 
             $table->foreign('payer')
             ->references('id')

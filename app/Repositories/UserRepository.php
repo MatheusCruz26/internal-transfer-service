@@ -28,4 +28,12 @@ class UserRepository implements iUser
         return $user->save();
     }
 
+    public function increaseBalance(int $id, float $value): bool
+    {
+        $user = $this->find($id);
+        $user->balance += $value;
+
+        return $user->save();
+    }
+
 }

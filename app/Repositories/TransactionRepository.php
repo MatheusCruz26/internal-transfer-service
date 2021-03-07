@@ -15,9 +15,21 @@ class TransactionRepository implements iTransaction
         return $this->transaction = $transaction;
     }
 
+    public function find(int $id): Transaction
+    {
+        return $this->transaction->find($id);
+    }
+
     public function create(array $transaction): Transaction
     {
         return $this->transaction->create($transaction);
+    }
+
+    public function modifyStatus(int $id, string $status): bool
+    {
+        return $this->transaction->where('id', $id)->update([
+            'status' => $status
+        ]);
     }
 
 }

@@ -2,23 +2,23 @@
 
 namespace App\Services\Transaction;
 
-// use App\Core\Http\HttpClient;
 use Exception;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Queue;
 
 use App\Interfaces\iTransaction;
 use App\Interfaces\iUser;
 
+use App\Jobs\ExecuteTransactionJob;
+
 class MakeTransactionService
 {
-    // private $http;
     private $transaction;
     private $user;
 
     public function __construct(iTransaction $iTransaction, iUser $iUser)
     {
-        // $this->http = $httpClient;
         $this->transaction = $iTransaction;
         $this->user = $iUser;
     }
@@ -26,13 +26,15 @@ class MakeTransactionService
     public function make(array $transaction): JsonResponse
     {
         try {
-            $this->transaction->create($transaction);
+            $transaction_id = $this->transaction->create($transaction)->id;
             $this->user->withdrawBalance($transaction['payer'], $transaction['value']);
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'internal error when processing the request.'
             ], 500);
         }
+
+        Queue::laterOn('high', 10, new ExecuteTransactionJob($transaction_id));
 
         return response()->json([
             'message' => 'the transaction is in process.'
