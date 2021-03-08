@@ -15,12 +15,12 @@ class UserFactory extends Factory
     {
         $fakeBr    = FakerFactory::create('pt_BR');
         
-        $document  = $this->faker->boolean(15) ? $fakeBr->cpf : $fakeBr->cnpj;
-        $type      = $this->faker->boolean(15) ? 'client' : 'shopkeeper';
+        $document  = $this->faker->boolean(25) ? $fakeBr->cpf : $fakeBr->cnpj;
+        $type      = $this->faker->boolean(25) ? 'client' : 'shopkeeper';
     
         return [
             'name'     => $this->faker->unique()->name(),
-            'password' => 'Teste@10',
+            'password' => '#1$AA00',
             'document' => preg_replace("/[^0-9]/", '', $document),
             'email'    => $this->faker->unique()->safeEmail,
             'type'     => $type,

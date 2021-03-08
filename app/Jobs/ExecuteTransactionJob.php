@@ -57,8 +57,6 @@ class ExecuteTransactionJob extends Job
                 }   
             }
         }
-
-        Queue::laterOn('medium', 30, new ExecuteTransactionJob($this->transaction_id));
         
     }
 
