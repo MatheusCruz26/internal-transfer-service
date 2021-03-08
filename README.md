@@ -54,7 +54,7 @@ POST /transaction
 Este comando irá executar os seguintes passos:
 
 1. Criar o arquivo .env com base no .env-example
-2. Subir os containers Docker em sua máquina local
+2. Subir os containers Docker em sua máquina
 3. Instalação das dependências
 4. Execução das Migrations
 5. Execução das Seeds
@@ -67,6 +67,6 @@ Após esses passos o ambiente poderá ser acessado através da url: **http://loc
 
 -   Bloquear transações iguais num curto periodo de tempo
 -   Enviar um e-mail com o comprovante da transação para o lojista e cliente
--   Notificar o pagador que ocorreu um problema em sua transaçäo
+-   Notificar o pagador que ocorreu um problema em sua transação
 -   Utilizar uma chave mais segura para identificar o pagador e o beneficiário
 -   Implementar mensageria
