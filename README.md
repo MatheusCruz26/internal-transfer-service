@@ -69,4 +69,4 @@ Após esses passos o ambiente poderá ser acessado através da url: **http://loc
 -   Enviar um e-mail com o comprovante da transação para o lojista e cliente
 -   Notificar o pagador que ocorreu um problema em sua transação
 -   Utilizar uma chave mais segura para identificar o pagador e o beneficiário
--   Implementar mensageria
+-   Criar serviço de clientes
