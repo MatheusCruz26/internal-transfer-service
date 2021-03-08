@@ -65,8 +65,7 @@ Após esses passos o ambiente poderá ser acessado através da url: **http://loc
 
 ## Backlog
 
--   Bloquear transações iguais num curto periodo de tempo
 -   Enviar um e-mail com o comprovante da transação para o lojista e cliente
--   Notificar o pagador que ocorreu um problema em sua transação
+-   Bloquear transações iguais num curto periodo de tempo
 -   Utilizar uma chave mais segura para identificar o pagador e o beneficiário
--   Criar serviço de clientes
+-   Criar um serviço de clientes
