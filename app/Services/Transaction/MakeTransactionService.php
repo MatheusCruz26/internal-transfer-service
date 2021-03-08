@@ -41,6 +41,8 @@ class MakeTransactionService
                 ], 400);
             }
 
+            $transaction['status'] = 'processed';
+
             $this->transaction->create($transaction);
 
         } catch (Exception $e) {

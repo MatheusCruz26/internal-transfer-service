@@ -53,13 +53,13 @@ POST /transaction
 
 Este comando irá executar os seguintes passos:
 
-1. Criar o arquivo .env com base no .env-example
-2. Subir os containers Docker em sua máquina
-3. Instalação das dependências
-4. Execução das Migrations
-5. Execução das Seeds
-6. Execução dos testes
-7. Iniciar o processamento dos Jobs
+- Criar o arquivo .env com base no .env-example
+- Subir os containers docker em sua máquina
+- Instalação das dependências
+- Execução das migrations
+- Execução das seeds
+- Execução dos testes
+- Iniciar o processamento dos Jobs
 
 Após esses passos o ambiente poderá ser acessado através da url: **http://localhost:8000**
 

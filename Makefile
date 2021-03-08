@@ -20,6 +20,10 @@ init:
 	tput setaf 0
 
 	tput setaf 4
+	docker exec internal-php-fpm ./vendor/bin/phpunit
+	tput setaf 0
+
+	tput setaf 4
 	docker exec internal-php-fpm php artisan queue:work --queue=high,medium,low,default
 	tput setaf 0
 
