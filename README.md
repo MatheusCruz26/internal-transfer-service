@@ -1,4 +1,4 @@
-# Transaction service
+# Transaction Service
 
 Olá, esse serviço simula transações entre clientes e lojistas. Seja bem-vindo(a) !!
 
